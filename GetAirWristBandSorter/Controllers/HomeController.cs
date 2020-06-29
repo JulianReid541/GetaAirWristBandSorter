@@ -1,28 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using GetAirWristBandSorter.Models;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace GetAirWristBandSorter.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
 
-        public HomeController(ILogger<HomeController> logger) {
-            _logger = logger;
+        public HomeController() {
         }
 
         public IActionResult Index() {
-            return View();
-        }
-
-        public IActionResult Privacy() {
-            return View();
+            ColorSheet c = new ColorSheet();
+            List<string[]> strings = c.CreateSheet().ToList();
+            return View(strings);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
