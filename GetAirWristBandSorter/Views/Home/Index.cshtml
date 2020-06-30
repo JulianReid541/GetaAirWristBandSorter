@@ -16,8 +16,8 @@
             @foreach (string[] s in Model) {
                 <tr>
                     <td class="font-weight-bold">@s[0]</td>
-                    <td class="font-weight-bold">@s[1]</td>
-                    <td class="font-weight-bold">@s[2]</td>
+                    <td class="font-weight-bold" style="background-color:@s[1]">@s[1]</td>
+                    <td class="font-weight-bold" style="background-color:@s[2]">@s[2]</td>
                 </tr>
             }
         </tbody>
