@@ -7,7 +7,7 @@ namespace GetAirWristBandSorter.Models
 {
     public class ColorSheet
     {
-        public string[] Colors = { "Red", "Blue", "Pink", "Purple", "Yellow", "Green", "Orange" };
+        public string[] Colors = { "Red/Paw", "Blue/Smiley", "Pink/Wow", "Purple/Dino", "Yellow/Wow", "Green/Paw", "Orange/Elephant" };
 
         public string[] Times = { "10:30", "11:00", "11:30", "12:00",
                                   "12:30", "1:00", "1:30", "2:00",
@@ -17,7 +17,7 @@ namespace GetAirWristBandSorter.Models
                                   "8:30", "9:00", "9:30", "10:00",
                                   "10:30", "11:00", "11:30", "12:00" };
 
-        public string[] OffColors = { "", "", "Red", "Blue", "Pink", "Purple", "Yellow", "Green", "Orange" };
+        public string[] OffColors = { "", "", "Red/Paw", "Blue/Smiley", "Pink/Wow", "Purple/Dino", "Yellow/Wow", "Green/Paw", "Orange/Elephant" };
 
 
 
