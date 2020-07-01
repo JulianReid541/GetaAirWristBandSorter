@@ -1,11 +1,14 @@
-﻿function init() {
-    let date = new Date();
+﻿const date = new Date();
+
+function init() {
     let hour = addZero(date.getHours());
     let minute = addZero(date.getMinutes());
 
     let combinedTime = hour + ":" + minute;
 
     let roundedTime = RoundUp(combinedTime);
+
+    console.log(roundedTime);
 
     document.getElementById(roundedTime).style.backgroundColor = "GoldenRod";
 }
@@ -34,21 +37,28 @@ function addZero(i) {
 }
 
 function roundMinute(m) {
-    if (m <= 30) {
+    if (m < 30) {
         return 30;
     }
-    else if (m > 30) {
-        return 0;
+    else if (m >= 30) {
+        return 00;
     }
 }
 
 function roundHour(h, m) {
-    const d = new Date();
     if (m != 0) {
-        return addZero(d.getHours());
+        let hour = date.getHours();
+        if (hour % 12 != 0)
+            return (hour % 12);
+        else
+            return 12;
     }
     else {
-        return addZero(d.getHours + 1);
+        let hour = date.getHours() + 1;
+        if (hour % 12 != 0)
+            return (hour % 12);
+        else
+            return 12;
     }
 }
 
