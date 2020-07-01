@@ -21,7 +21,7 @@ function RoundUp(time, date) {
 
     let rMinute = roundMinute(minutes);
 
-    let rHour = roundHour(hours, rMinute, date);
+    let rHour = roundHour(rMinute, date);
 
     let roundedTime = rHour + ":" + rMinute;
 
@@ -41,12 +41,12 @@ function roundMinute(m) {
         return 30;
     }
     else if (m >= 30) {
-        return 00;
+        return "00";
     }
 }
 
-function roundHour(h, m, date) {
-    if (m != 0) {
+function roundHour(m, date) {
+    if (m !== "00") {
         let hour = date.getHours();
         if (hour % 12 != 0)
             return (hour % 12);
