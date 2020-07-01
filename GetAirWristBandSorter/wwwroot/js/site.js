@@ -22,7 +22,6 @@ function RoundUp(time, date) {
 
     let roundedTime = rHour + ":" + rMinute;
 
-
     return roundedTime;
 }
 
