@@ -7,9 +7,6 @@
 
     let roundedTime = RoundUp(combinedTime, date);
 
-    console.log(roundedTime);
-    console.log(date);
-
     document.getElementById(roundedTime).style.backgroundColor = "GoldenRod";
 }
 
