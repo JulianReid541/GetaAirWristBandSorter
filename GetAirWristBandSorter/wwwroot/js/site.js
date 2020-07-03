@@ -71,11 +71,24 @@ function roundHour(m, date) {
     }
 }
 
-//loads init function on page load
-Window.Onload = new init();
+//loads setup function on page load
+Window.Onload = setup();
 
-//refreshes init every second 
-setTimeout(function () {
-    //window.location.reload()
+function setup() {
+    
     new init();
-}, 1000);
+    startTimer();
+}
+
+function startTimer() {
+    //gets current date and time. sets the timeout to refresh the page every hour and half hour
+    var now = new Date();
+    var minutes = now.getMinutes();
+    var seconds = now.getSeconds();
+    setTimeout('refresh()', (((30 - (minutes % 30) - ((seconds > 0) ? 1 : 0)) * 60) + (60 - seconds)) * 1000);
+}
+
+function refresh() {
+    //Reloads the page
+    window.location.reload();
+}
