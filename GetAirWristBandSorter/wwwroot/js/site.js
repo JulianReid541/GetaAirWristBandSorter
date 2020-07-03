@@ -11,7 +11,7 @@
     let roundedTime = RoundUp(combinedTime, date);
 
     //updates background of the corresponding ID
-    document.getElementById(roundedTime).style.backgroundColor = "GoldenRod";
+    document.getElementById(roundedTime).style.background = "GoldenRod";
 }
 
 function RoundUp(time, date) {
@@ -48,7 +48,7 @@ function roundMinute(m) {
     if (m < 30 || m == 0) {
         return 30;
     }
-    else if (m >= 30 || m < 60) {
+    else if (m >= 30 && m <= 59) {
         return "00";
     }
 }
@@ -76,5 +76,6 @@ Window.Onload = new init();
 
 //refreshes init every second 
 setTimeout(function () {
+    //window.location.reload()
     new init();
 }, 1000);
