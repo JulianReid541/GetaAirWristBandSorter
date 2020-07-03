@@ -17,7 +17,7 @@
                 <tr>
                     @{int post = @s[2].IndexOf("/");}
 
-                    <td class="font-weight-bold">@s[0]</td>
+                    <td class="font-weight-bold" id="@s[0]">@s[0]</td>
                     <td class="font-weight-bold" style="background-color:@s[1].Substring(0, @s[1].IndexOf("/"))">@s[1]</td>
                     @if (post > 0) {
                         <td class="font-weight-bold" style="background-color:@s[2].Substring(0, @s[2].IndexOf("/"))">@s[2]</td>
