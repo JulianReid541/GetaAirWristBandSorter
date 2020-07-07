@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -49,6 +50,18 @@ namespace GetAirWristBandSorter.Models
             }
 
             return timesColors;
+        }
+
+        public void Shuffle() {
+            Random gen = new Random();
+            for (int i = 0, j = 2; i < Colors.Length; i++, j++ ) {
+                int rnd = gen.Next(i, Colors.Length);
+                string c = Colors[rnd];
+                Colors[rnd] = Colors[i];
+                Colors[i] = c;
+
+                OffColors[j] = Colors[i];
+            }
         }
     }
 }

@@ -15,6 +15,7 @@ namespace GetAirWristBandSorter.Controllers
 
         public IActionResult Index() {
             ColorSheet c = new ColorSheet();
+            c.Shuffle();
             List<string[]> strings = c.CreateSheet().ToList();
             return View(strings);
         }
