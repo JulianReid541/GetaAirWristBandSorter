@@ -28,11 +28,19 @@ function RoundUp(time, date) {
     //rounds the hour if the time change is an hour change other wise the hour is the current hour
     let rHour = roundHour(rMinute, date);
 
+    //function returns am or pm
+    let amPM = getAMPM(date);
+
     //combines the minutes and numbers 
-    let roundedTime = rHour + ":" + rMinute;
+    let roundedTime = rHour + ":" + rMinute + amPM;
 
     //returns the combination string
     return roundedTime;
+}
+
+function getAMPM(date) {
+    let hours = date.getHours();
+    return (hours >= 12) ? "PM" : "AM";
 }
 
 function addZero(i) {
