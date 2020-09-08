@@ -5,7 +5,7 @@
     let minute = addZero(date.getMinutes());
 
     //combines the time
-    let combinedTime = hour + ":" + minute;
+    let combinedTime = `${hour}:${minute}`;
 
     //gets rounded time from method
     let roundedTime = RoundUp(combinedTime, date);
@@ -32,7 +32,7 @@ function RoundUp(time, date) {
     let amPM = getAMPM(rHour);
 
     //combines the minutes and numbers 
-    let roundedTime = rHour + ":" + rMinute + amPM;
+    let roundedTime = `${rHour}:${rMinute}${amPM}`;
 
     //returns the combination string
     return roundedTime;
