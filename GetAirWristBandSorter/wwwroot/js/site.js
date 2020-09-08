@@ -29,7 +29,7 @@ function RoundUp(time, date) {
     let rHour = roundHour(rMinute, date);
 
     //function returns am or pm
-    let amPM = getAMPM(date);
+    let amPM = getAMPM(rHour);
 
     //combines the minutes and numbers 
     let roundedTime = rHour + ":" + rMinute + amPM;
@@ -38,9 +38,8 @@ function RoundUp(time, date) {
     return roundedTime;
 }
 
-function getAMPM(date) {
-    let hours = date.getHours();
-    return (hours >= 12) ? "PM" : "AM";
+function getAMPM(hour) {
+    return (hour >= 12) ? "PM" : "AM";
 }
 
 function addZero(i) {
