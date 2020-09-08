@@ -61,7 +61,7 @@ function roundMinute(m) {
 }
 
 function roundHour(m, date) {
-    // takes in minute and date. if minute is 00 return current hour or and hour ahead
+    // takes in minute and date. if minute is 00 return current hour or an hour ahead
     if (m !== "00") {
         let hour = date.getHours();
         if (hour % 12 != 0)
