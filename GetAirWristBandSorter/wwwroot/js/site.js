@@ -14,6 +14,16 @@
     document.getElementById(roundedTime).style.background = "GoldenRod";
 }
 
+function GetorSetLocalStorageValue(name, value) {
+    if (!localStorage.getItem(`${name}`)) {
+        localStorage.setItem(`${name}`, value)
+    }
+
+    const localValue = localStorage.getItem(`${name}`);
+
+    return localValue;
+}
+
 function RoundUp(time, date) {
     // gets incoming time and date. Splits it via the : 
     let [hours, minutes] = time.split(':');
@@ -93,7 +103,6 @@ function refresh() {
 }
 
 function setup() {
-
     new init();
     startTimer();
 }
