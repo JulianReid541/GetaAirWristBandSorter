@@ -10,13 +10,27 @@
     //gets rounded time from method
     let roundedTime = RoundUp(combinedTime, date);
 
+    let currentboard = GetorSetArrayStorageValue("CurrentBoard", model);
+
+    console.table(currentboard);
+
     //updates background of the corresponding ID
     document.getElementById(roundedTime).style.background = "GoldenRod";
 }
 
-function GetorSetLocalStorageValue(name, value) {
+function GetorSetArrayStorageValue(name, value) {
     if (!localStorage.getItem(`${name}`)) {
-        localStorage.setItem(`${name}`, value)
+        localStorage.setItem(`${name}`, JSON.stringify(value))
+    }
+
+    const localValue = JSON.parse(localStorage.getItem(`${name}`));
+
+    return localValue;
+}
+
+function GetorSetDateStorageValue(name, value) {
+    if (!localStorage.getItem(`${name}`)) {
+        localStorage.setItem(`${name}`, value);
     }
 
     const localValue = localStorage.getItem(`${name}`);
