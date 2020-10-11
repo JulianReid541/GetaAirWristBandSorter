@@ -79,15 +79,6 @@ function roundHour(m, date) {
     }
 }
 
-//loads setup function on page load
-Window.Onload = setup();
-
-function setup() {
-    
-    new init();
-    startTimer();
-}
-
 function startTimer() {
     //gets current date and time. sets the timeout to refresh the page every hour and half hour
     var now = new Date();
@@ -100,3 +91,12 @@ function refresh() {
     //Reloads the page
     window.location.reload();
 }
+
+function setup() {
+
+    new init();
+    startTimer();
+}
+
+//loads setup function on page load
+Window.Onload = setup();
