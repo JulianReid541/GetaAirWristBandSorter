@@ -1,4 +1,6 @@
-﻿function init() {
+﻿const dayOfYear = date => Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+
+function init() {
     // gets current date and hours/minutes
     let date = new Date();
     let hour = addZero(date.getHours());
@@ -10,8 +12,54 @@
     //gets rounded time from method
     let roundedTime = RoundUp(combinedTime, date);
 
+    //get's the current color sheet from local storage based on model from controller
+    let currentBoard = GetorSetArrayStorageValue("CurrentBoard", model, false);
+
+    //returns current day of year
+    let todayDayOfYear = GetorSetDateStorageValue("TodayDayofYear");
+
+    if (ShouldBoardShuffle(todayDayOfYear)) {
+        let newBoard = Shuffle(currentBoard);
+    }
+
     //updates background of the corresponding ID
     document.getElementById(roundedTime).style.background = "GoldenRod";
+
+    //localStorage.clear();
+}
+
+function Shuffle(board) {
+    return null;
+}
+
+function GetorSetArrayStorageValue(name, value, bool) {
+    if (!localStorage.getItem(`${name}` || bool === true)) {
+        localStorage.setItem(`${name}`, JSON.stringify(value))
+    }
+
+    const localValue = JSON.parse(localStorage.getItem(`${name}`));
+
+    return localValue;
+}
+
+function ShouldBoardShuffle(todayDay) {
+    if (dayOfYear(new Date) > todayDay) {
+        GetorSetDateStorageValue("TodayDayofYear");
+        return true;
+    }
+    else
+        return false;
+}
+
+function GetorSetDateStorageValue(name) {
+    if (!localStorage.getItem(`${name}`) || dayOfYear(new Date) > localStorage.getItem(`${name}`)) {
+        localStorage.setItem(`${name}`, dayOfYear(new Date()));
+    }
+
+    const localValue = localStorage.getItem(`${name}`);
+
+
+    return localValue;
 }
 
 function RoundUp(time, date) {
@@ -78,15 +126,6 @@ function roundHour(m, date) {
     }
 }
 
-//loads setup function on page load
-Window.Onload = setup();
-
-function setup() {
-    
-    new init();
-    startTimer();
-}
-
 function startTimer() {
     //gets current date and time. sets the timeout to refresh the page every hour and half hour
     var now = new Date();
@@ -99,3 +138,11 @@ function refresh() {
     //Reloads the page
     window.location.reload();
 }
+
+function setup() {
+    new init();
+    startTimer();
+}
+
+//loads setup function on page load
+Window.Onload = setup();
