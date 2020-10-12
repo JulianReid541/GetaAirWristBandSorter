@@ -1,4 +1,6 @@
-﻿function init() {
+﻿const dayOfYear = date => Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+
+function init() {
     // gets current date and hours/minutes
     let date = new Date();
     let hour = addZero(date.getHours());
@@ -11,10 +13,14 @@
     let roundedTime = RoundUp(combinedTime, date);
 
     //get's the current color sheet from local storage based on model from controller
-    let currentBoard = GetorSetArrayStorageValue("CurrentBoard", model);
+    let currentBoard = GetorSetArrayStorageValue("CurrentBoard", model, false);
 
+    //returns current day of year
     let todayDayOfYear = GetorSetDateStorageValue("TodayDayofYear");
 
+    if (ShouldBoardShuffle(todayDayOfYear)) {
+        let newBoard = Shuffle(currentBoard);
+    }
 
     //updates background of the corresponding ID
     document.getElementById(roundedTime).style.background = "GoldenRod";
@@ -22,8 +28,12 @@
     //localStorage.clear();
 }
 
-function GetorSetArrayStorageValue(name, value) {
-    if (!localStorage.getItem(`${name}`)) {
+function Shuffle(board) {
+    return null;
+}
+
+function GetorSetArrayStorageValue(name, value, bool) {
+    if (!localStorage.getItem(`${name}` || bool === true)) {
         localStorage.setItem(`${name}`, JSON.stringify(value))
     }
 
@@ -32,15 +42,17 @@ function GetorSetArrayStorageValue(name, value) {
     return localValue;
 }
 
-function ShouldBoardShuffle() {
-    return null;
+function ShouldBoardShuffle(todayDay) {
+    if (dayOfYear(new Date) > todayDay) {
+        GetorSetDateStorageValue("TodayDayofYear");
+        return true;
+    }
+    else
+        return false;
 }
 
 function GetorSetDateStorageValue(name) {
-    if (!localStorage.getItem(`${name}`)) {
-        const dayOfYear = date =>
-            Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
-
+    if (!localStorage.getItem(`${name}`) || dayOfYear(new Date) > localStorage.getItem(`${name}`)) {
         localStorage.setItem(`${name}`, dayOfYear(new Date()));
     }
 
