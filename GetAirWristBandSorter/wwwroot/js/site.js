@@ -10,12 +10,16 @@
     //gets rounded time from method
     let roundedTime = RoundUp(combinedTime, date);
 
-    let currentboard = GetorSetArrayStorageValue("CurrentBoard", model);
+    //get's the current color sheet from local storage based on model from controller
+    let currentBoard = GetorSetArrayStorageValue("CurrentBoard", model);
 
-    console.table(currentboard);
+    let todayDayOfYear = GetorSetDateStorageValue("TodayDayofYear");
+
 
     //updates background of the corresponding ID
     document.getElementById(roundedTime).style.background = "GoldenRod";
+
+    //localStorage.clear();
 }
 
 function GetorSetArrayStorageValue(name, value) {
@@ -28,12 +32,20 @@ function GetorSetArrayStorageValue(name, value) {
     return localValue;
 }
 
-function GetorSetDateStorageValue(name, value) {
+function ShouldBoardShuffle() {
+    return null;
+}
+
+function GetorSetDateStorageValue(name) {
     if (!localStorage.getItem(`${name}`)) {
-        localStorage.setItem(`${name}`, value);
+        const dayOfYear = date =>
+            Math.floor((date - new Date(date.getFullYear(), 0, 0)) / 1000 / 60 / 60 / 24);
+
+        localStorage.setItem(`${name}`, dayOfYear(new Date()));
     }
 
     const localValue = localStorage.getItem(`${name}`);
+
 
     return localValue;
 }
