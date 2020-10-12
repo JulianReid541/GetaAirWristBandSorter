@@ -77,7 +77,7 @@ function RoundUp(time, date) {
     let rHour = roundHour(rMinute, date);
 
     //function returns am or pm
-    let amPM = getAMPM(rHour);
+    let amPM = getAMPM(hours);
 
     //combines the minutes and numbers 
     let roundedTime = `${rHour}:${rMinute}${amPM}`;
