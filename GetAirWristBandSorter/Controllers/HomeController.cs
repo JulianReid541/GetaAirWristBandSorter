@@ -1,10 +1,7 @@
-﻿using System.Diagnostics;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using GetAirWristBandSorter.Models;
 using System.Collections.Generic;
 using System.Linq;
-using System;
-using Microsoft.Extensions.Caching.Memory;
 
 namespace GetAirWristBandSorter.Controllers
 {
